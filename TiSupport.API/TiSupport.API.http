@@ -1,0 +1,6 @@
+@TiSupport.API_HostAddress = http://localhost:5202
+
+GET {{TiSupport.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
