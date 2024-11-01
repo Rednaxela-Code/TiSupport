@@ -36,12 +36,8 @@ public class Repository<T> : IRepository<T> where T : class
         }
         if (includeProperties != null)
         {
-            for (var index = 0;
-                 index < includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries).Length;
-                 index++)
+            foreach (var includeProp in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
             {
-                var includeProp =
-                    includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)[index];
                 query = query.Include(includeProp);
             }
         }
@@ -55,11 +51,13 @@ public class Repository<T> : IRepository<T> where T : class
 
         query = query.Where(filter);
 
-        if (includeProperties == null) return await query.FirstOrDefaultAsync();
-        query = includeProperties
-            .Split([','], StringSplitOptions.RemoveEmptyEntries)
-            .Aggregate(query, (current, includeProp) => current
-                .Include(includeProp));
+        if (includeProperties != null)
+        {
+            foreach (var includeProp in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                query = query.Include(includeProp);
+            }
+        }
 
         return await query.FirstOrDefaultAsync();
     }
