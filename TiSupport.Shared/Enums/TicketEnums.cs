@@ -1,4 +1,4 @@
-namespace TiSupport.Shared.Models;
+namespace TiSupport.Shared.Enums;
 
 public enum TicketCategory
 {

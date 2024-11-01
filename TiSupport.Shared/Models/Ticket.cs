@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Net.Mail;
+using TiSupport.Shared.Enums;
 
 namespace TiSupport.Shared.Models;
 
