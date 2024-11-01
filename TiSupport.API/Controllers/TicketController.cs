@@ -9,12 +9,12 @@ namespace TiSupport.API.Controllers;
 public class TicketController : ControllerBase
 {
     private readonly ILogger<TicketController> _logger;
-    private readonly IRepository<Ticket> _ticketRepo;
+    private readonly IUnitOfWork _unitOfWork;
 
-    public TicketController(ILogger<TicketController> logger, IRepository<Ticket> ticketRepo)
+    public TicketController(ILogger<TicketController> logger, IUnitOfWork unitOfWork)
     {
         _logger = logger;
-        _ticketRepo = ticketRepo;
+        _unitOfWork = unitOfWork;
     }
 
     [HttpGet(Name = "GetTickets")]
@@ -22,7 +22,7 @@ public class TicketController : ControllerBase
     {
         try
         {
-            var tickets = await _ticketRepo.GetAll();
+            var tickets = await _unitOfWork.Tickets.GetAll();
             return Ok(tickets);
         }
         catch (Exception ex)
@@ -30,5 +30,18 @@ public class TicketController : ControllerBase
             return StatusCode(500, $"Internal server error: {ex.Message}");
         }
     }
-    
+
+    [HttpPost(Name = "CreateTicket")]
+    public async Task<IActionResult> Create([FromBody] Ticket ticket)
+    {
+        try
+        {
+            var result = await _unitOfWork.Tickets.Add(ticket);
+            return Ok(result);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Internal server error: {ex.Message}");
+        }
+    }
 }

@@ -18,6 +18,6 @@ namespace TiSupport.Shared.Models
 
         public string? Phone { get; set; }
 
-        public List<Ticket>? Tickets { get; set; }
+        public List<int>? TicketIds { get; set; }
     }
 }

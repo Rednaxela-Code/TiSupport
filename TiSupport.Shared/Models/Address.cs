@@ -12,8 +12,6 @@ namespace TiSupport.Shared.Models
         public string? ZipCode { get; set; }
         public string? Country { get; set; }
         public string? HomeNumber { get; set; }
-
-        // Navigation property back to User
-        public User? User { get; set; }
+        public int? UserId { get; set; }
     }
 }

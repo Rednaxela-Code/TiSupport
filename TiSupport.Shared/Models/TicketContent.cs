@@ -5,14 +5,9 @@ namespace TiSupport.Shared.Models
 {
     public class TicketContent
     {
-        [Key]
-        public required int Id { get; set; }
-        
-        public string? Content { get; set; }
+        [Key] public required int Id { get; set; }
 
-        // Foreign key for Ticket
+        public string? Content { get; set; }
         public int TicketId { get; set; }
-        [ForeignKey("TicketId")]
-        public Ticket Ticket { get; set; }
     }
 }

@@ -10,6 +10,4 @@ public class TicketComment
     public string? Content { get; set; }
     
     public required int TicketId { get; set; }
-    [ForeignKey("TicketId")]
-    public required Ticket Ticket { get; set; }
 }

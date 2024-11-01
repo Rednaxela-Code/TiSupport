@@ -8,8 +8,5 @@ public class TicketAttachment
     [Key]
     public required int Id { get; set; }
     public byte[]? Content { get; set; }
-    
     public required int TicketId { get; set; }
-    [ForeignKey("TicketId")]
-    public required Ticket Ticket { get; set; }
 }
