@@ -16,6 +16,21 @@ public class TicketController : ControllerBase
         _logger = logger;
         _unitOfWork = unitOfWork;
     }
+    
+    [HttpGet("{id:int}", Name = "GetTicketById")]
+    public async Task<ActionResult<Ticket>> Get(int id)
+    {
+        try
+        {
+            var ticket = await _unitOfWork.Tickets.GetFirstOrDefault(t => t.Id == id);
+            if (ticket == null) return NotFound();
+            return Ok(ticket);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Internal server error: {ex.Message}");
+        }
+    }
 
     [HttpGet(Name = "GetTickets")]
     public async Task<IActionResult> GetAll()
@@ -37,7 +52,40 @@ public class TicketController : ControllerBase
         try
         {
             var result = await _unitOfWork.Tickets.Add(ticket);
+            await _unitOfWork.Save();
             return Ok(result);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Internal server error: {ex.Message}");
+        }
+    }
+
+    [HttpPut(Name = "UpdateTicket")]
+    public async Task<IActionResult> Update([FromBody] Ticket ticket)
+    {
+        try
+        {
+            _unitOfWork.Tickets.Update(ticket);
+            await _unitOfWork.Save();
+            return Ok(ticket);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Internal server error: {ex.Message}");
+        }
+    }
+
+    [HttpDelete("{id:int}", Name = "DeleteTicket")]
+    public async Task<IActionResult> Delete(int id)
+    {
+        try
+        {
+            var ticket = await _unitOfWork.Tickets.GetFirstOrDefault(t => t.Id == id);
+            if (ticket == null) return NotFound();
+            await _unitOfWork.Tickets.Remove(ticket);
+            await _unitOfWork.Save();
+            return Ok();
         }
         catch (Exception ex)
         {
