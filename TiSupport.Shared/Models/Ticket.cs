@@ -13,16 +13,14 @@ public class Ticket
     public TicketPriority Priority { get; set; }
     public TicketCategory Category { get; set; }
     public DateTime Created { get; set; }
-    
-    public int? ContentId { get; set; }
-    [ForeignKey("ContentId")]
-    public TicketContent? Content { get; set; }
-    
+
+    public TicketContent? Content { get; set; }  // Navigation property to TicketContent
+
     public List<TicketAttachment>? Attachments { get; set; }
-    
+
     public required int UserId { get; set; }
     [ForeignKey("UserId")]
     public required User User { get; set; }
-    
+
     public List<TicketComment>? Comments { get; set; }
 }
