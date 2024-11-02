@@ -6,23 +6,16 @@ namespace TiSupport.API.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class TicketController : ControllerBase
+public class TicketController(ILogger<TicketController> logger, IUnitOfWork unitOfWork) : ControllerBase
 {
-    private readonly ILogger<TicketController> _logger;
-    private readonly IUnitOfWork _unitOfWork;
+    private readonly ILogger<TicketController> _logger = logger;
 
-    public TicketController(ILogger<TicketController> logger, IUnitOfWork unitOfWork)
-    {
-        _logger = logger;
-        _unitOfWork = unitOfWork;
-    }
-    
     [HttpGet("{id:int}", Name = "GetTicketById")]
     public async Task<ActionResult<Ticket>> Get(int id)
     {
         try
         {
-            var ticket = await _unitOfWork.Tickets.GetFirstOrDefault(t => t.Id == id);
+            var ticket = await unitOfWork.Tickets.GetFirstOrDefault(t => t.Id == id);
             if (ticket == null) return NotFound();
             return Ok(ticket);
         }
@@ -37,7 +30,7 @@ public class TicketController : ControllerBase
     {
         try
         {
-            var tickets = await _unitOfWork.Tickets.GetAll();
+            var tickets = await unitOfWork.Tickets.GetAll();
             return Ok(tickets);
         }
         catch (Exception ex)
@@ -51,8 +44,8 @@ public class TicketController : ControllerBase
     {
         try
         {
-            var result = await _unitOfWork.Tickets.Add(ticket);
-            await _unitOfWork.Save();
+            var result = await unitOfWork.Tickets.Add(ticket);
+            await unitOfWork.Save();
             return Ok(result);
         }
         catch (Exception ex)
@@ -66,8 +59,8 @@ public class TicketController : ControllerBase
     {
         try
         {
-            _unitOfWork.Tickets.Update(ticket);
-            await _unitOfWork.Save();
+            unitOfWork.Tickets.Update(ticket);
+            await unitOfWork.Save();
             return Ok(ticket);
         }
         catch (Exception ex)
@@ -81,10 +74,10 @@ public class TicketController : ControllerBase
     {
         try
         {
-            var ticket = await _unitOfWork.Tickets.GetFirstOrDefault(t => t.Id == id);
+            var ticket = await unitOfWork.Tickets.GetFirstOrDefault(t => t.Id == id);
             if (ticket == null) return NotFound();
-            await _unitOfWork.Tickets.Remove(ticket);
-            await _unitOfWork.Save();
+            await unitOfWork.Tickets.Remove(ticket);
+            await unitOfWork.Save();
             return Ok();
         }
         catch (Exception ex)
