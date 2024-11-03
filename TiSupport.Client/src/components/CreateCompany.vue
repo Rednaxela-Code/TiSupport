@@ -28,7 +28,7 @@ const createCompany = async () => {
     <form>
       <div class="input-group">
         <label>Name</label>
-        <input v-model="company.name" type="text" placeholder="Enter Company name">
+        <input v-model="company.name" placeholder="Enter Company name">
       </div>
       <button @click="createCompany" type="button" class="btn btn-primary">Create Ticket</button>
     </form>

@@ -1,15 +1,17 @@
 <script setup lang="ts">
-
+import {RouterLink} from "vue-router";
 </script>
 
 <template>
   <nav class="navbar">
     <div class="nav-container">
-      <a href="/" class="nav-logo">Support Hub</a>
+      <RouterLink to="/" class="nav-logo">TiSupport</RouterLink>
       <div class="nav-links">
-        <a href="/tickets" class="nav-link">Tickets</a>
-        <a href="/users" class="nav-link">Users</a>
-        <a href="/companies" class="nav-link">Companies</a>
+        <RouterLink to="/" class="nav-link">Home</RouterLink>
+        <RouterLink to="/tickets" class="nav-link">Tickets</RouterLink>
+        <RouterLink to="/contacts" class="nav-link">Contacts</RouterLink>
+        <RouterLink to="/companies" class="nav-link">Companies</RouterLink>
+        <RouterLink to="/settings" class="nav-link">Settings</RouterLink>
       </div>
     </div>
   </nav>
