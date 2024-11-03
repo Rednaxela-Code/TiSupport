@@ -33,6 +33,6 @@ export const createContact = async (contact: Contact) => {
         });
         console.log('Contact created successfully:', response.data);
     } catch (error) {
-        console.error('Error creating company:', error);
+        console.error('Error creating contact:', error);
     }
 };
