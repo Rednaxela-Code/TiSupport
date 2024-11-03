@@ -1,25 +1,22 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import axios from 'axios';
+import { ref } from 'vue';
+import { Company } from '../utils/companyUtils.ts';
+import { createCompany} from "../utils/companyUtils.ts";
 
-const company = ref({
+const newCompany = ref<Company>({
   id: 0,
-  name: '',
+  name: '', 
 });
 
-const createCompany = async () => {
+const submitForm = async () => {
   try {
-    const response = await axios.post('https://localhost:7151/company', company.value, {
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      timeout: 15000
-    });
-    console.log('Company created successfully:', response.data);
+    await createCompany(newCompany.value);
+    console.log('Company created successfully');
   } catch (error) {
     console.error('Error creating company:', error);
   }
 };
+
 </script>
 
 <template>
@@ -28,9 +25,9 @@ const createCompany = async () => {
     <form>
       <div class="input-group">
         <label>Name</label>
-        <input v-model="company.name" placeholder="Enter Company name">
+        <input v-model="newCompany.name" placeholder="Enter Company name">
       </div>
-      <button @click="createCompany" type="button" class="btn btn-primary">Create Ticket</button>
+      <button @click="submitForm" type="button" class="btn btn-primary">Create Company</button>
     </form>
   </div>
 </template>
