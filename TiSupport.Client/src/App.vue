@@ -6,6 +6,7 @@ import TicketStats from "./components/TicketStats.vue";
 import AllTickets from "./components/AllTickets.vue";
 import Companies from "./components/Companies.vue";
 import UserManagment from "./components/UserManagment.vue";
+import CreateCompany from "./components/CreateCompany.vue";
 </script>
 
 <template>
@@ -19,5 +20,6 @@ import UserManagment from "./components/UserManagment.vue";
     <AllTickets/>
     <Companies/>
     <UserManagment/>
+    <CreateCompany/>
   </div>
 </template>

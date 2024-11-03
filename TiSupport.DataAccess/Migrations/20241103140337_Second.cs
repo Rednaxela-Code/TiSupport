@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace TiSupport.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class Second : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -28,6 +28,20 @@ namespace TiSupport.DataAccess.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Addresses", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Companies",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Employees = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Companies", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -69,7 +83,7 @@ namespace TiSupport.DataAccess.Migrations
                     Priority = table.Column<int>(type: "int", nullable: false),
                     Category = table.Column<int>(type: "int", nullable: false),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Content = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Attachments = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserId = table.Column<int>(type: "int", nullable: false),
                     CommentIds = table.Column<string>(type: "nvarchar(max)", nullable: true)
@@ -80,7 +94,7 @@ namespace TiSupport.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Users",
+                name: "Contacts",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -91,13 +105,14 @@ namespace TiSupport.DataAccess.Migrations
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AddressId = table.Column<int>(type: "int", nullable: false),
                     Phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TicketIds = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    TicketIds = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CompanyIds = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Users", x => x.Id);
+                    table.PrimaryKey("PK_Contacts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Users_Addresses_AddressId",
+                        name: "FK_Contacts_Addresses_AddressId",
                         column: x => x.AddressId,
                         principalTable: "Addresses",
                         principalColumn: "Id",
@@ -105,14 +120,20 @@ namespace TiSupport.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Users_AddressId",
-                table: "Users",
+                name: "IX_Contacts_AddressId",
+                table: "Contacts",
                 column: "AddressId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Companies");
+
+            migrationBuilder.DropTable(
+                name: "Contacts");
+
             migrationBuilder.DropTable(
                 name: "TicketAttachments");
 
@@ -121,9 +142,6 @@ namespace TiSupport.DataAccess.Migrations
 
             migrationBuilder.DropTable(
                 name: "Tickets");
-
-            migrationBuilder.DropTable(
-                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "Addresses");
