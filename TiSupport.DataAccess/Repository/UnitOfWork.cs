@@ -16,6 +16,7 @@ public class UnitOfWork : IUnitOfWork
         Contacts = new ContactRepository(_db);
         Addresses = new AddressRepository(_db);
         TicketAttachments = new TicketAttachmentRepository(_db);
+        TicketComments = new TicketCommentRepository(_db);
     }
 
     public ITicketRepository Tickets { get; private set; }
@@ -23,6 +24,7 @@ public class UnitOfWork : IUnitOfWork
     public IContactRepository Contacts { get; private set; }
     public IAddressRepository Addresses { get; private set; }
     public ITicketAttachmentRepository TicketAttachments { get; private set; }
+    public ITicketCommentRepository TicketComments { get; private set; }
 
     public async Task Save()
     {

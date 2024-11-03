@@ -11,6 +11,8 @@ public interface IUnitOfWork
     IAddressRepository Addresses { get; }
     
     ITicketAttachmentRepository TicketAttachments { get; }
+    
+    ITicketCommentRepository TicketComments { get; }
 
     Task Save();
 }
