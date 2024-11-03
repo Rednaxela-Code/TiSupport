@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using TiSupport.Core.Services;
+using TiSupport.Core.Services.IService;
 using TiSupport.DataAccess.Database;
 using TiSupport.DataAccess.Repository;
 using TiSupport.DataAccess.Repository.IRepo;
@@ -22,6 +24,12 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(
 ));
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IAddressService, AddressService>();
+builder.Services.AddScoped<ICompanyService, CompanyService>();
+builder.Services.AddScoped<IContactService, ContactService>();
+builder.Services.AddScoped<ITicketService, TicketService>();
+builder.Services.AddScoped<ITicketAttachmentService, TicketAttachmentService>();
+builder.Services.AddScoped<ITicketCommentService, TicketCommentService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

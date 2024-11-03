@@ -18,6 +18,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\TiSupport.Core\TiSupport.Core.csproj" />
       <ProjectReference Include="..\TiSupport.DataAccess\TiSupport.DataAccess.csproj" />
       <ProjectReference Include="..\TiSupport.Shared\TiSupport.Shared.csproj" />
     </ItemGroup>
