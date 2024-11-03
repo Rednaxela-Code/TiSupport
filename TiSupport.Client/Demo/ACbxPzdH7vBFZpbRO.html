@@ -1,0 +1,383 @@
+<html><head><base href="/">
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<title>Support Ticket Management System</title>
+<style>
+:root {
+    --bg-primary: #1a1a1b; /* Dark background */
+    --bg-secondary: #272729; /* Slightly lighter dark background */
+    --text-primary: #d7dadc; /* Light text color */
+    --text-secondary: #818384; /* Grey text color */
+    --accent: #4834d4; /* Deep bluish-purple */
+    --accent-hover: #686de0; /* A softer purple for hover effects */
+    --danger: #ff4646; /* Danger color remains unchanged */
+    --success: #2ecc71; /* Success color remains unchanged */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.navbar {
+    background-color: var(--bg-secondary);
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nav-logo {
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: var(--text-primary);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.nav-link:hover {
+    background-color: var(--accent);
+    color: white;
+}
+
+.main-content {
+    margin-top: 80px;
+    padding: 2rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card {
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background-color: var(--accent);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-hover);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.input-group {
+    margin-bottom: 1rem;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+}
+
+.input-group input, .input-group select, .input-group textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid var(--text-secondary);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--bg-primary);
+}
+
+.table th {
+    background-color: var(--bg-primary);
+    color: var(--text-secondary);
+}
+
+.badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 999px;
+    font-size: 0.875rem;
+}
+
+.badge-success {
+    background-color: var(--success);
+    color: white;
+}
+
+.badge-danger {
+    background-color: var(--danger);
+    color: white;
+}
+
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">Support Hub</a>
+            <div class="nav-links">
+                <a href="/tickets" class="nav-link">Tickets</a>
+                <a href="/users" class="nav-link">Users</a>
+                <a href="/companies" class="nav-link">Companies</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="card">
+            <h2>Recent Tickets</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Subject</th>
+                        <th>Status</th>
+                        <th>Priority</th>
+                        <th>Assigned To</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#1234</td>
+                        <td>Login Issues</td>
+                        <td><span class="badge badge-success">Open</span></td>
+                        <td>High</td>
+                        <td>John Doe</td>
+                        <td>
+                            <button class="btn btn-primary">Edit</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h3>Create New Ticket</h3>
+                <form>
+                    <div class="input-group">
+                        <label>Subject</label>
+                        <input type="text" placeholder="Enter ticket subject">
+                    </div>
+                    <div class="input-group">
+                        <label>Description</label>
+                        <textarea rows="3" placeholder="Enter ticket description"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label>Priority</label>
+                        <select>
+                            <option>Low</option>
+                            <option>Medium</option>
+                            <option>High</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Create Ticket</button>
+                </form>
+            </div>
+
+            <div class="card">
+                <h3>Statistics</h3>
+                <div id="stats">
+                    <p>Open Tickets: 12</p>
+                    <p>Closed Today: 5</p>
+                    <p>Average Response Time: 2.5 hours</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+// Basic SPA Router
+const router = {
+    init() {
+        this.handleRoute();
+        window.addEventListener('popstate', () => this.handleRoute());
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const url = e.target.getAttribute('href');
+                history.pushState(null, '', url);
+                this.handleRoute();
+            });
+        });
+    },
+
+    handleRoute() {
+        const path = window.location.pathname;
+        const mainContent = document.querySelector('.main-content');
+        
+        switch(path) {
+            case '/tickets':
+                mainContent.innerHTML = this.ticketsTemplate();
+                break;
+            case '/users':
+                mainContent.innerHTML = this.usersTemplate();
+                break;
+            case '/companies':
+                mainContent.innerHTML = this.companiesTemplate();
+                break;
+            default:
+                // Home page content remains as is
+                break;
+        }
+    },
+
+    ticketsTemplate() {
+        return `
+            <div class="card">
+                <h2>All Tickets</h2>
+                <button class="btn btn-primary" style="margin-bottom: 1rem;">New Ticket</button>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Subject</th>
+                            <th>Status</th>
+                            <th>Priority</th>
+                            <th>Assigned To</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#1234</td>
+                            <td>Login Issues</td>
+                            <td><span class="badge badge-success">Open</span></td>
+                            <td>High</td>
+                            <td>John Doe</td>
+                            <td>
+                                <button class="btn btn-primary">Edit</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        `;
+    },
+
+    usersTemplate() {
+        return `
+            <div class="card">
+                <h2>Users Management</h2>
+                <button class="btn btn-primary" style="margin-bottom: 1rem;">New User</button>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#001</td>
+                            <td>John Doe</td>
+                            <td>john@example.com</td>
+                            <td>Support Agent</td>
+                            <td><span class="badge badge-success">Active</span></td>
+                            <td>
+                                <button class="btn btn-primary">Edit</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        `;
+    },
+
+    companiesTemplate() {
+        return `
+            <div class="card">
+                <h2>Companies</h2>
+                <button class="btn btn-primary" style="margin-bottom: 1rem;">New Company</button>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Company Name</th>
+                            <th>Contact Person</th>
+                            <th>Email</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#C001</td>
+                            <td>Tech Corp</td>
+                            <td>Jane Smith</td>
+                            <td>contact@techcorp.com</td>
+                            <td><span class="badge badge-success">Active</span></td>
+                            <td>
+                                <button class="btn btn-primary">Edit</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        `;
+    }
+};
+
+// Initialize the router when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    router.init();
+});
+</script>
+</body>
+</html>

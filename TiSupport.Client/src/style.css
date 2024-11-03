@@ -1,79 +1,155 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --bg-primary: #1a1a1b; /* Dark background */
+  --bg-secondary: #272729; /* Slightly lighter dark background */
+  --text-primary: #d7dadc; /* Light text color */
+  --text-secondary: #818384; /* Grey text color */
+  --accent: #4834d4; /* Deep bluish-purple */
+  --accent-hover: #686de0; /* A softer purple for hover effects */
+  --danger: #ff4646; /* Danger color remains unchanged */
+  --success: #2ecc71; /* Success color remains unchanged */
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
 }
 
 body {
-  margin: 0;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.navbar {
+  background-color: var(--bg-secondary);
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-container {
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.nav-logo {
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+.nav-links {
+  display: flex;
+  gap: 2rem;
 }
-button:hover {
-  border-color: #646cff;
+
+.nav-link {
+  color: var(--text-primary);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s;
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+
+.nav-link:hover {
+  background-color: var(--accent);
+  color: white;
+}
+
+.main-content {
+  margin-top: 80px;
+  padding: 2rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .card {
-  padding: 2em;
+  background-color: var(--bg-secondary);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
 }
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.btn-primary {
+  background-color: var(--accent);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.input-group {
+  margin-bottom: 1rem;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
+}
+
+.input-group input, .input-group select, .input-group textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--text-secondary);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--bg-primary);
+}
+
+.table th {
+  background-color: var(--bg-primary);
+  color: var(--text-secondary);
+}
+
+.badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-danger {
+  background-color: var(--danger);
+  color: white;
 }
