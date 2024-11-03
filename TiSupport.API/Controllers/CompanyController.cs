@@ -11,16 +11,17 @@ public class CompanyController(ILogger<CompanyController> logger, IUnitOfWork un
     private readonly ILogger<CompanyController> _logger = logger;
 
     [HttpGet("{id:int}", Name = "GetCompanyById")]
-    public async Task<ActionResult<Ticket>> Get(int id)
+    public async Task<ActionResult<Company>> Get(int id)
     {
         try
         {
-            var ticket = await unitOfWork.Companies.GetFirstOrDefault(t => t.Id == id);
-            if (ticket == null) return NotFound();
-            return Ok(ticket);
+            var company = await unitOfWork.Companies.GetFirstOrDefault(t => t.Id == id);
+            if (company == null) return NotFound();
+            return Ok(company);
         }
         catch (Exception ex)
         {
+            _logger.LogError(ex, ex.Message);
             return StatusCode(500, $"Internal server error: {ex.Message}");
         }
     }
@@ -35,6 +36,7 @@ public class CompanyController(ILogger<CompanyController> logger, IUnitOfWork un
         }
         catch (Exception ex)
         {
+            _logger.LogError(ex, ex.Message);
             return StatusCode(500, $"Internal server error: {ex.Message}");
         }
     }
@@ -50,6 +52,7 @@ public class CompanyController(ILogger<CompanyController> logger, IUnitOfWork un
         }
         catch (Exception ex)
         {
+            _logger.LogError(ex, ex.Message);
             return StatusCode(500, $"Internal server error: {ex.Message}");
         }
     }
@@ -65,6 +68,7 @@ public class CompanyController(ILogger<CompanyController> logger, IUnitOfWork un
         }
         catch (Exception ex)
         {
+            _logger.LogError(ex, ex.Message);
             return StatusCode(500, $"Internal server error: {ex.Message}");
         }
     }
@@ -82,6 +86,7 @@ public class CompanyController(ILogger<CompanyController> logger, IUnitOfWork un
         }
         catch (Exception ex)
         {
+            _logger.LogError(ex, ex.Message);
             return StatusCode(500, $"Internal server error: {ex.Message}");
         }
     }

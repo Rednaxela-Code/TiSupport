@@ -21,6 +21,7 @@ public class TicketCommentController(ILogger<TicketCommentController> logger, IU
         }
         catch (Exception ex)
         {
+            _logger.LogError(ex, ex.Message);
             return StatusCode(500, $"Internal server error: {ex.Message}");
         }
     }
@@ -35,6 +36,7 @@ public class TicketCommentController(ILogger<TicketCommentController> logger, IU
         }
         catch (Exception ex)
         {
+            _logger.LogError(ex, ex.Message);
             return StatusCode(500, $"Internal server error: {ex.Message}");
         }
     }
@@ -50,6 +52,7 @@ public class TicketCommentController(ILogger<TicketCommentController> logger, IU
         }
         catch (Exception ex)
         {
+            _logger.LogError(ex, ex.Message);
             return StatusCode(500, $"Internal server error: {ex.Message}");
         }
     }
@@ -65,6 +68,7 @@ public class TicketCommentController(ILogger<TicketCommentController> logger, IU
         }
         catch (Exception ex)
         {
+            _logger.LogError(ex, ex.Message);
             return StatusCode(500, $"Internal server error: {ex.Message}");
         }
     }
@@ -82,6 +86,7 @@ public class TicketCommentController(ILogger<TicketCommentController> logger, IU
         }
         catch (Exception ex)
         {
+            _logger.LogError(ex, ex.Message);
             return StatusCode(500, $"Internal server error: {ex.Message}");
         }
     }

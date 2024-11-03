@@ -11,7 +11,7 @@ public class ContactController(ILogger<ContactController> logger, IUnitOfWork un
     private readonly ILogger<ContactController> _logger = logger;
 
     [HttpGet("{id:int}", Name = "GetContactById")]
-    public async Task<ActionResult<Ticket>> Get(int id)
+    public async Task<ActionResult<Contact>> Get(int id)
     {
         try
         {
@@ -21,6 +21,7 @@ public class ContactController(ILogger<ContactController> logger, IUnitOfWork un
         }
         catch (Exception ex)
         {
+            _logger.LogError(ex, ex.Message);
             return StatusCode(500, $"Internal server error: {ex.Message}");
         }
     }
@@ -35,6 +36,7 @@ public class ContactController(ILogger<ContactController> logger, IUnitOfWork un
         }
         catch (Exception ex)
         {
+            _logger.LogError(ex, ex.Message);
             return StatusCode(500, $"Internal server error: {ex.Message}");
         }
     }
@@ -50,6 +52,7 @@ public class ContactController(ILogger<ContactController> logger, IUnitOfWork un
         }
         catch (Exception ex)
         {
+            _logger.LogError(ex, ex.Message);
             return StatusCode(500, $"Internal server error: {ex.Message}");
         }
     }
@@ -65,6 +68,7 @@ public class ContactController(ILogger<ContactController> logger, IUnitOfWork un
         }
         catch (Exception ex)
         {
+            _logger.LogError(ex, ex.Message);
             return StatusCode(500, $"Internal server error: {ex.Message}");
         }
     }
@@ -82,6 +86,7 @@ public class ContactController(ILogger<ContactController> logger, IUnitOfWork un
         }
         catch (Exception ex)
         {
+            _logger.LogError(ex, ex.Message);
             return StatusCode(500, $"Internal server error: {ex.Message}");
         }
     }

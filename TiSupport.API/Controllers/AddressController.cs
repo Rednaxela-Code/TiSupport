@@ -11,7 +11,7 @@ public class AddressController(ILogger<AddressController> logger, IUnitOfWork un
     private readonly ILogger<AddressController> _logger = logger;
 
     [HttpGet("{id:int}", Name = "GetAddressById")]
-    public async Task<ActionResult<Ticket>> Get(int id)
+    public async Task<ActionResult<Address>> Get(int id)
     {
         try
         {
@@ -21,6 +21,7 @@ public class AddressController(ILogger<AddressController> logger, IUnitOfWork un
         }
         catch (Exception ex)
         {
+            _logger.LogError(ex, ex.Message);
             return StatusCode(500, $"Internal server error: {ex.Message}");
         }
     }
@@ -35,6 +36,7 @@ public class AddressController(ILogger<AddressController> logger, IUnitOfWork un
         }
         catch (Exception ex)
         {
+            _logger.LogError(ex, ex.Message);
             return StatusCode(500, $"Internal server error: {ex.Message}");
         }
     }
@@ -50,6 +52,7 @@ public class AddressController(ILogger<AddressController> logger, IUnitOfWork un
         }
         catch (Exception ex)
         {
+            _logger.LogError(ex, ex.Message);
             return StatusCode(500, $"Internal server error: {ex.Message}");
         }
     }
@@ -65,6 +68,7 @@ public class AddressController(ILogger<AddressController> logger, IUnitOfWork un
         }
         catch (Exception ex)
         {
+            _logger.LogError(ex, ex.Message);
             return StatusCode(500, $"Internal server error: {ex.Message}");
         }
     }
@@ -82,6 +86,7 @@ public class AddressController(ILogger<AddressController> logger, IUnitOfWork un
         }
         catch (Exception ex)
         {
+            _logger.LogError(ex, ex.Message);
             return StatusCode(500, $"Internal server error: {ex.Message}");
         }
     }
