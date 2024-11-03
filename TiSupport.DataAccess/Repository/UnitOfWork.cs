@@ -13,10 +13,12 @@ public class UnitOfWork : IUnitOfWork
         _db = db;
         Tickets = new TicketRepository(_db);
         Companies = new CompanyRepository(_db);
+        Contacts = new ContactRepository(_db);
     }
 
     public ITicketRepository Tickets { get; private set; }
     public ICompanyRepository Companies { get; private set; }
+    public IContactRepository Contacts { get; private set; }
 
     public async Task Save()
     {

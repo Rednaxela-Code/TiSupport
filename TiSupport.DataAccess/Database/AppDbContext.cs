@@ -12,7 +12,7 @@ public class AppDbContext : DbContext
     
     public DbSet<Ticket> Tickets { get; set; }
     public DbSet<TicketComment> TicketComments { get; set; }
-    public DbSet<ContactPerson> ContactPersons { get; set; }
+    public DbSet<Contact> Contacts { get; set; }
     public DbSet<Address> Addresses { get; set; }
     public DbSet<TicketAttachment> TicketAttachments { get; set; }
     public DbSet<Company> Companies { get; set; }
