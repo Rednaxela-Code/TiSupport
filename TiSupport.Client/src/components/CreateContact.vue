@@ -44,13 +44,13 @@ const submitForm = async () => {
 
 <template>
   <div class="card">
-    <h3>Create New Company</h3>
+    <h3>Create New Contact</h3>
     <form>
       <div class="input-group">
         <label>Name</label>
-        <input v-model="newContact.name" placeholder="Enter Company name">
+        <input v-model="newContact.fullName" placeholder="Enter Contact name">
       </div>
-      <button @click="submitForm" type="button" class="btn btn-primary">Create Company</button>
+      <button @click="submitForm" type="button" class="btn btn-primary">Create Contact</button>
     </form>
   </div>
 </template>

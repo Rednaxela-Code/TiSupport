@@ -33,9 +33,9 @@ onMounted(() => {
       </tr>
       </thead>
       <tbody>
-      <tr v-for="company in contacts" :key="company.id">
-        <td>{{company.id}}</td>
-        <td>{{company.name}}</td>
+      <tr v-for="contact in contacts" :key="contact.id">
+        <td>{{contact.id}}</td>
+        <td>{{contact.fullName}}</td>
       </tr>
       </tbody>
     </table>
