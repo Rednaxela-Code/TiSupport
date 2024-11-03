@@ -1,4 +1,4 @@
-import axios from "axios";
+import httpClient from "./httpClient.ts";
 
 export interface Company {
     id?: number;
@@ -7,11 +7,10 @@ export interface Company {
 
 export const createCompany = async (company: Company) => {
     try {
-        const response = await axios.post('https://localhost:7151/company', company, {
+        const response = await httpClient.post('/company', company, {
             headers: {
                 'Content-Type': 'application/json'
             },
-            timeout: 15000
         });
         console.log('Company created successfully:', response.data);
     } catch (error) {
