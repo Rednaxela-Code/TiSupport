@@ -7,6 +7,8 @@ public interface IUnitOfWork
     ICompanyRepository Companies { get; }
     
     IContactRepository Contacts { get; }
+    
+    IAddressRepository Addresses { get; }
 
     Task Save();
 }
