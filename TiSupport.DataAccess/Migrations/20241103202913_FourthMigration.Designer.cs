@@ -12,8 +12,8 @@ using TiSupport.DataAccess.Database;
 namespace TiSupport.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241103194447_ThirdMigration")]
-    partial class ThirdMigration
+    [Migration("20241103202913_FourthMigration")]
+    partial class FourthMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -127,7 +127,7 @@ namespace TiSupport.DataAccess.Migrations
                     b.Property<string>("Attachments")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Category")
+                    b.Property<int?>("Category")
                         .HasColumnType("int");
 
                     b.Property<string>("CommentIds")
@@ -136,20 +136,20 @@ namespace TiSupport.DataAccess.Migrations
                     b.Property<string>("Content")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("Created")
+                    b.Property<DateTime?>("Created")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Priority")
+                    b.Property<int?>("Priority")
                         .HasColumnType("int");
 
-                    b.Property<int>("Status")
+                    b.Property<int?>("Status")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");

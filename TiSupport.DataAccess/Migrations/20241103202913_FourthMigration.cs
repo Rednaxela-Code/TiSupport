@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace TiSupport.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class ThirdMigration : Migration
+    public partial class FourthMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -99,13 +99,13 @@ namespace TiSupport.DataAccess.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Status = table.Column<int>(type: "int", nullable: false),
-                    Priority = table.Column<int>(type: "int", nullable: false),
-                    Category = table.Column<int>(type: "int", nullable: false),
-                    Created = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: true),
+                    Priority = table.Column<int>(type: "int", nullable: true),
+                    Category = table.Column<int>(type: "int", nullable: true),
+                    Created = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Attachments = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: true),
                     CommentIds = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
