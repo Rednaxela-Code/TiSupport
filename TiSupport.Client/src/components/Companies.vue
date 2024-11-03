@@ -1,5 +1,24 @@
 <script setup lang="ts">
+import {onMounted, ref} from "vue";
+import {Company, getAllCompanies} from "../utils/companyUtils.ts";
 
+const companies = ref<Company[]>([]);
+
+const fetchCompanies = async () => {
+  try {
+    companies.value = await getAllCompanies();
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+defineExpose({
+  refreshData: fetchCompanies
+});
+
+onMounted(() => {
+  fetchCompanies();
+});
 </script>
 
 <template>
@@ -11,22 +30,12 @@
       <tr>
         <th>ID</th>
         <th>Company Name</th>
-        <th>Contact Person</th>
-        <th>Email</th>
-        <th>Status</th>
-        <th>Actions</th>
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <td>#C001</td>
-        <td>Tech Corp</td>
-        <td>Jane Smith</td>
-        <td>contact@techcorp.com</td>
-        <td><span class="badge badge-success">Active</span></td>
-        <td>
-          <button class="btn btn-primary">Edit</button>
-        </td>
+      <tr v-for="company in companies" :key="company.id">
+        <td>{{company.id}}</td>
+        <td>{{company.name}}</td>
       </tr>
       </tbody>
     </table>

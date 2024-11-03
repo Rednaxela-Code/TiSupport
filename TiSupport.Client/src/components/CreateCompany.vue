@@ -5,13 +5,23 @@ import { createCompany} from "../utils/companyUtils.ts";
 
 const newCompany = ref<Company>({
   id: 0,
-  name: '', 
+  name: '',
+  employees: null,
 });
+
+const emit = defineEmits(['companyCreated']);
 
 const submitForm = async () => {
   try {
     await createCompany(newCompany.value);
     console.log('Company created successfully');
+    emit('companyCreated');
+
+    newCompany.value = {
+      id: 0,
+      name: '',
+      employees: null,
+    };
   } catch (error) {
     console.error('Error creating company:', error);
   }
