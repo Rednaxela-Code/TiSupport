@@ -50,6 +50,10 @@ const submitForm = async () => {
           <input v-model="newTicket.name" placeholder="Enter ticket subject">
         </div>
         <div class="input-group">
+          <label>User</label>
+          <input v-model="newTicket.userId" placeholder="Enter ticket user id">
+        </div>
+        <div class="input-group">
           <label>Description</label>
           <textarea v-model="newTicket.content" rows="3" placeholder="Enter ticket description"></textarea>
         </div>

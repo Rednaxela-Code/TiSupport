@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import AllTickets from "../components/AllTickets.vue";
+import Tickets from "../components/Tickets.vue";
 </script>
 
 <template>
   <div class="main-content">
-    <AllTickets />
+    <Tickets />
   </div>
 </template>
