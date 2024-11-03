@@ -15,12 +15,14 @@ public class UnitOfWork : IUnitOfWork
         Companies = new CompanyRepository(_db);
         Contacts = new ContactRepository(_db);
         Addresses = new AddressRepository(_db);
+        TicketAttachments = new TicketAttachmentRepository(_db);
     }
 
     public ITicketRepository Tickets { get; private set; }
     public ICompanyRepository Companies { get; private set; }
     public IContactRepository Contacts { get; private set; }
     public IAddressRepository Addresses { get; private set; }
+    public ITicketAttachmentRepository TicketAttachments { get; private set; }
 
     public async Task Save()
     {

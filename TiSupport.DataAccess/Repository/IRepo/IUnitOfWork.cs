@@ -9,6 +9,8 @@ public interface IUnitOfWork
     IContactRepository Contacts { get; }
     
     IAddressRepository Addresses { get; }
+    
+    ITicketAttachmentRepository TicketAttachments { get; }
 
     Task Save();
 }
