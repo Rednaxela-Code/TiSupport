@@ -13,9 +13,8 @@ public class Ticket
     public TicketPriority Priority { get; set; }
     public TicketCategory Category { get; set; }
     public DateTime Created { get; set; }
-    public string Content { get; set; }
-    public List<string>? Attachments { get; set; }
-
+    public string? Content { get; set; }
+    public List<int>? Attachments { get; set; }
     public required int UserId { get; set; }
     public List<int>? CommentIds { get; set; }
 }

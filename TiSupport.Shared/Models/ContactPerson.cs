@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TiSupport.Shared.Models
 {
-    public class User
+    public class ContactPerson
     {
         [Key]
         public required int Id { get; set; }
@@ -19,5 +19,6 @@ namespace TiSupport.Shared.Models
         public string? Phone { get; set; }
 
         public List<int>? TicketIds { get; set; }
+        public List<int>? CompanyIds { get; set; }
     }
 }
