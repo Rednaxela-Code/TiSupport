@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {onMounted, ref} from "vue";
-import {Contact, getAllContacts} from "../utils/contactUtils.ts";
+import {Contact, getAllContacts} from "../../utils/contactUtils.ts";
 
 const contacts = ref<Contact[]>([]);
 

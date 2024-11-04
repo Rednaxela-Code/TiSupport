@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import CreateTicket from "../components/CreateTicket.vue";
-import Tickets from "../components/Tickets.vue";
+import CreateTicket from "../components/ticket/CreateTicket.vue";
+import Tickets from "../components/ticket/Tickets.vue";
 import {ref} from "vue";
-import UpdateTicket from "../components/UpdateTicket.vue";
-import DeleteTicket from "../components/DeleteTicket.vue";
+import UpdateTicket from "../components/ticket/UpdateTicket.vue";
+import DeleteTicket from "../components/ticket/DeleteTicket.vue";
 
 const ticketsComponentRef = ref();
 

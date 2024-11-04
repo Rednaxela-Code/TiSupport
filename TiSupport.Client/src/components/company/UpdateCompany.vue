@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { Company } from '../utils/companyUtils.ts';
-import { updateCompany } from "../utils/companyUtils.ts";
+import { Company } from '../../utils/companyUtils.ts';
+import { updateCompany } from "../../utils/companyUtils.ts";
 
 const updatableCompany = ref<Company>({
   id: 0,

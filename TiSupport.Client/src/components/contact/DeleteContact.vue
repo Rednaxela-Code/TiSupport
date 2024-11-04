@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import {Contact, deleteContact} from "../utils/contactUtils.ts";
+import {Contact, deleteContact} from "../../utils/contactUtils.ts";
 
 const contact = ref<Contact>({
   id: 0,

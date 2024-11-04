@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import {Company, deleteCompany} from "../utils/companyUtils.ts";
+import {Company, deleteCompany} from "../../utils/companyUtils.ts";
 
 const company = ref<Company>({
   id: 0,

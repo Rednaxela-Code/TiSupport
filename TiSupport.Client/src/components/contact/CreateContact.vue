@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import {Contact, createContact} from "../utils/contactUtils.ts";
+import {Contact, createContact} from "../../utils/contactUtils.ts";
 
 const newContact = ref<Contact>({
   id: 0,

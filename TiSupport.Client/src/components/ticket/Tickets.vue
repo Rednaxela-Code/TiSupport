@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {onMounted, ref} from "vue";
-import {getAllTickets, Ticket} from "../utils/ticketUtils.ts";
+import {getAllTickets, Ticket} from "../../utils/ticketUtils.ts";
 
 const tickets = ref<Ticket[]>([]);
 

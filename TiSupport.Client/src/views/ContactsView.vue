@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import CreateContact from "../components/CreateContact.vue";
+import CreateContact from "../components/contact/CreateContact.vue";
 import {ref} from "vue";
-import Contacts from "../components/Contacts.vue";
-import UpdateContact from "../components/UpdateContact.vue";
-import DeleteContact from "../components/DeleteContact.vue";
+import Contacts from "../components/contact/Contacts.vue";
+import UpdateContact from "../components/contact/UpdateContact.vue";
+import DeleteContact from "../components/contact/DeleteContact.vue";
 
 const contactComponentRef = ref();
 

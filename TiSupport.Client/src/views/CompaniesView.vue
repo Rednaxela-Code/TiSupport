@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import CreateCompany from "../components/CreateCompany.vue";
-import Companies from "../components/Companies.vue";
-import DeleteCompany from "../components/DeleteCompany.vue";
-import UpdateCompany from "../components/UpdateCompany.vue";
+import CreateCompany from "../components/company/CreateCompany.vue";
+import Companies from "../components/company/Companies.vue";
+import DeleteCompany from "../components/company/DeleteCompany.vue";
+import UpdateCompany from "../components/company/UpdateCompany.vue";
 
 const companiesComponentRef = ref();
 

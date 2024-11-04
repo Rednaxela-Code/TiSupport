@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Tickets from "../components/Tickets.vue";
+import Tickets from "../components/ticket/Tickets.vue";
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { Ticket, updateTicket } from "../utils/ticketUtils.ts";
+import { Ticket, updateTicket } from "../../utils/ticketUtils.ts";
 
 const updateableTicket = ref<Ticket>({
   id: 0,
