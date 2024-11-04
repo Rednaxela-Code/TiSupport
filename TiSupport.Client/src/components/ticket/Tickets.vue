@@ -30,6 +30,9 @@ onMounted(() => {
       <tr>
         <th>ID</th>
         <th>Subject</th>
+        <th>Status</th>
+        <th>Priority</th>
+        <th>Category</th>
         <th>Content</th>
       </tr>
       </thead>
@@ -37,8 +40,10 @@ onMounted(() => {
       <tr v-for="ticket in tickets" :key="ticket.id">
         <td>{{ticket.id}}</td>
         <td>{{ticket.name}}</td>
+        <td>{{ticket.status}}</td>
+        <td>{{ticket.priority}}</td>
+        <td>{{ticket.category}}</td>
         <td>{{ticket.content}}</td>
-        <td><span class="badge badge-success">Open</span></td>
         <td>
           <button class="btn btn-primary">Edit</button>
         </td>
