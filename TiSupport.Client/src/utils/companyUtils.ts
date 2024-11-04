@@ -28,3 +28,16 @@ export const createCompany = async (company: Company) => {
         console.error('Error creating company:', error);
     }
 };
+
+export const deleteCompany = async (company: Company) => {
+    try {
+        const response = await httpClient.delete(`/company/${company.id}`, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        });
+        console.log('Company deleted successfully:', response.data);
+    } catch (error) {
+        console.error('Error deleting company:', error);
+    }
+};
