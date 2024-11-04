@@ -58,3 +58,29 @@ export const createTicket = async (ticket: Ticket) => {
         console.error('Error creating ticket:', error);
     }
 };
+
+export const updateTicket = async (ticket: Ticket) => {
+    try {
+        const response = await httpClient.put('/ticket', ticket, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        });
+        console.log('Ticket updated successfully:', response.data);
+    } catch (error) {
+        console.error('Error updating ticket:', error);
+    }
+};
+
+export const deleteTicket = async (ticket: Ticket) => {
+    try {
+        const response = await httpClient.delete(`/ticket/${ticket.id}`, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        });
+        console.log('Ticket deleted successfully:', response.data);
+    } catch (error) {
+        console.error('Error deleting ticket:', error);
+    }
+};
