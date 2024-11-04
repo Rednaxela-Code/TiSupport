@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import {computed, ref} from 'vue';
-import { Company, CompanyType } from '../../utils/companyUtils.ts';
+import {ref} from 'vue';
+import {Company, companyTypeOptions} from '../../utils/companyUtils.ts';
 import { createCompany} from "../../utils/companyUtils.ts";
 
 const newCompany = ref<Company>({
@@ -28,12 +28,6 @@ const submitForm = async () => {
     console.error('Error creating company:', error);
   }
 };
-
-const companyTypeOptions = computed(() => {
-  return Object.keys(CompanyType)
-      .filter(key => isNaN(Number(key)))
-      .map(key => ({ name: key, value: CompanyType[key as keyof typeof CompanyType] }));
-});
 </script>
 
 <template>

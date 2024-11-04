@@ -1,4 +1,5 @@
 import httpClient from '../utils/httpClient.ts';
+import {computed} from "vue";
 
 export interface Company {
     id: number;
@@ -21,6 +22,12 @@ export enum CompanyType
     Wholesaler = 9,
     Affiliate = 10,
 }
+
+export const companyTypeOptions = computed(() => {
+    return Object.keys(CompanyType)
+        .filter(key => isNaN(Number(key)))
+        .map(key => ({ name: key, value: CompanyType[key as keyof typeof CompanyType] }));
+});
 
 export const getAllCompanies = async (): Promise<Company[]> => {
     try {
