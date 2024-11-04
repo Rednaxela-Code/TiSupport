@@ -47,12 +47,24 @@ const submitForm = async () => {
     <h3>Update Contact</h3>
     <form>
       <div class="input-group">
-        <label>ID</label>
-        <input v-model.number="updateableContact.id">
-      </div>
-      <div class="input-group">
         <label>Name</label>
         <input v-model="updateableContact.fullName" placeholder="Enter Contact name">
+      </div>
+      <div class="input-group">
+        <label>First Name</label>
+        <input v-model="updateableContact.firstName" placeholder="Enter first name">
+      </div>
+      <div class="input-group">
+        <label>Last Name</label>
+        <input v-model="updateableContact.lastName" placeholder="Enter second name">
+      </div>
+      <div class="input-group">
+        <label>Email</label>
+        <input v-model="updateableContact.email" placeholder="Enter Contact email">
+      </div>
+      <div class="input-group">
+        <label>Phone</label>
+        <input v-model="updateableContact.phone" placeholder="Enter Contact phone">
       </div>
       <button @click="submitForm" type="button" class="btn btn-primary">Update Contact</button>
     </form>

@@ -50,6 +50,22 @@ const submitForm = async () => {
         <label>Name</label>
         <input v-model="newContact.fullName" placeholder="Enter Contact name">
       </div>
+      <div class="input-group">
+        <label>First Name</label>
+        <input v-model="newContact.firstName" placeholder="Enter first name">
+      </div>
+      <div class="input-group">
+        <label>Last Name</label>
+        <input v-model="newContact.lastName" placeholder="Enter second name">
+      </div>
+      <div class="input-group">
+        <label>Email</label>
+        <input v-model="newContact.email" placeholder="Enter Contact email">
+      </div>
+      <div class="input-group">
+        <label>Phone</label>
+        <input v-model="newContact.phone" placeholder="Enter Contact phone">
+      </div>
       <button @click="submitForm" type="button" class="btn btn-primary">Create Contact</button>
     </form>
   </div>

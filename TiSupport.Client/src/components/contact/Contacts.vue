@@ -30,12 +30,20 @@ onMounted(() => {
       <tr>
         <th>ID</th>
         <th>Contact Name</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Phone</th>
       </tr>
       </thead>
       <tbody>
       <tr v-for="contact in contacts" :key="contact.id">
         <td>{{contact.id}}</td>
         <td>{{contact.fullName}}</td>
+        <td>{{contact.firstName}}</td>
+        <td>{{contact.lastName}}</td>
+        <td>{{contact.email}}</td>
+        <td>{{contact.phone}}</td>
       </tr>
       </tbody>
     </table>
