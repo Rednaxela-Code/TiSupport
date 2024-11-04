@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { Ticket, updateTicket } from "../../utils/ticketUtils.ts";
+import {
+  Ticket,
+  ticketCategoryOptions,
+  ticketPriorityOptions,
+  ticketStatusOptions,
+  updateTicket
+} from "../../utils/ticketUtils.ts";
 
 const updateableTicket = ref<Ticket>({
   id: 0,
@@ -54,8 +60,39 @@ const submitForm = async () => {
         <input v-model="updateableTicket.name" placeholder="Enter ticket subject">
       </div>
       <div class="input-group">
+        <label>Status</label>
+        <select v-model="updateableTicket.status">
+          <option disabled value="">Please select one</option>
+          <option v-for="option in ticketStatusOptions" :key="option.value" :value="option.value">
+            {{ option.name }}
+          </option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label>Priority</label>
+        <select v-model="updateableTicket.priority">
+          <option disabled value="">Please select one</option>
+          <option v-for="option in ticketPriorityOptions" :key="option.value" :value="option.value">
+            {{ option.name }}
+          </option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label>Category</label>
+        <select v-model="updateableTicket.category">
+          <option disabled value="">Please select one</option>
+          <option v-for="option in ticketCategoryOptions" :key="option.value" :value="option.value">
+            {{ option.name }}
+          </option>
+        </select>
+      </div>
+      <div class="input-group">
         <label>User</label>
         <input v-model="updateableTicket.userId" placeholder="Enter ticket user id">
+      </div>
+      <div class="input-group">
+        <label>Attachments</label>
+        <input v-model="updateableTicket.attachments" placeholder="Enter attachments">
       </div>
       <div class="input-group">
         <label>Description</label>

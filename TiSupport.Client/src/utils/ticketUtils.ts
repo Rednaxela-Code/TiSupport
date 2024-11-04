@@ -1,4 +1,5 @@
 import httpClient from "./httpClient.ts";
+import {computed} from "vue";
 
 export interface Ticket {
     id: number;
@@ -34,6 +35,24 @@ export enum TicketCategory
     Maintenance = 2,
     Administration = 3,
 }
+
+export const ticketStatusOptions = computed(() => {
+    return Object.keys(TicketStatus)
+        .filter(key => isNaN(Number(key)))
+        .map(key => ({ name: key, value: TicketStatus[key as keyof typeof TicketStatus] }));
+});
+
+export const ticketPriorityOptions = computed(() => {
+    return Object.keys(TicketPriority)
+        .filter(key => isNaN(Number(key)))
+        .map(key => ({ name: key, value: TicketPriority[key as keyof typeof TicketPriority] }));
+});
+
+export const ticketCategoryOptions = computed(() => {
+    return Object.keys(TicketCategory)
+        .filter(key => isNaN(Number(key)))
+        .map(key => ({ name: key, value: TicketCategory[key as keyof typeof TicketCategory] }));
+});
 
 export const getAllTickets = async (): Promise<Ticket[]> => {
     try {
