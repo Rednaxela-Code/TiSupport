@@ -36,3 +36,29 @@ export const createContact = async (contact: Contact) => {
         console.error('Error creating contact:', error);
     }
 };
+
+export const updateContact = async (contact: Contact) => {
+    try {
+        const response = await httpClient.put('/contact', contact, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        });
+        console.log('Contact update successfully:', response.data);
+    } catch (error) {
+        console.error('Error updating contact:', error);
+    }
+};
+
+export const deleteContact = async (contact: Contact) => {
+    try {
+        const response = await httpClient.delete(`/contact/${contact.id}`, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        });
+        console.log('Contact deleted successfully:', response.data);
+    } catch (error) {
+        console.error('Error deleting contact:', error);
+    }
+};
