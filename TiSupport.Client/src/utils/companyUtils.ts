@@ -4,6 +4,22 @@ export interface Company {
     id: number;
     name: string;
     employees: number[] | null; // List of integers or null
+    companyType: number | null;
+}
+
+export enum CompanyType
+{
+    None = 0,
+    Supplier = 1,
+    Partner = 2,
+    Distributor = 3,
+    Manufacturer = 4,
+    Retailer = 5,
+    Consultant = 6,
+    Contractor = 7,
+    Vendor = 8,
+    Wholesaler = 9,
+    Affiliate = 10,
 }
 
 export const getAllCompanies = async (): Promise<Company[]> => {
