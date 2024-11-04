@@ -29,6 +29,19 @@ export const createCompany = async (company: Company) => {
     }
 };
 
+export const updateCompany = async (company: Company) => {
+    try {
+        const response = await httpClient.put('/company', company, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        });
+        console.log('Company created successfully:', response.data);
+    } catch (error) {
+        console.error('Error creating company:', error);
+    }
+};
+
 export const deleteCompany = async (company: Company) => {
     try {
         const response = await httpClient.delete(`/company/${company.id}`, {
