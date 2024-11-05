@@ -84,7 +84,7 @@ namespace TiSupport.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("AddressId")
+                    b.Property<int?>("AddressId")
                         .HasColumnType("int");
 
                     b.Property<string>("CompanyIds")
@@ -109,8 +109,6 @@ namespace TiSupport.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AddressId");
 
                     b.ToTable("Contacts");
                 });
@@ -192,17 +190,6 @@ namespace TiSupport.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TicketComments");
-                });
-
-            modelBuilder.Entity("TiSupport.Shared.Models.Contact", b =>
-                {
-                    b.HasOne("TiSupport.Shared.Models.Address", "Address")
-                        .WithMany()
-                        .HasForeignKey("AddressId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Address");
                 });
 #pragma warning restore 612, 618
         }
