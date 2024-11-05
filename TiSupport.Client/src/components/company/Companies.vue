@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {onMounted, ref} from "vue";
-import {Company, getAllCompanies} from "../utils/companyUtils.ts";
+import {Company, getAllCompanies} from "../../utils/companyUtils.ts";
 
 const companies = ref<Company[]>([]);
 

@@ -12,9 +12,7 @@ namespace TiSupport.Shared.Models
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
 
-        public required int AddressId { get; set; }
-        [ForeignKey("AddressId")]
-        public required Address Address { get; set; }
+        public int? AddressId { get; set; }
 
         public string? Phone { get; set; }
 
