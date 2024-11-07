@@ -3,6 +3,7 @@
   <component name="UserContentModel">
     <attachedFolders>
       <Path>TiSupport.Client</Path>
+      <Path>TiSupport.Docker</Path>
     </attachedFolders>
     <explicitIncludes />
     <explicitExcludes />
