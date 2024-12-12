@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using TiSupport.Core.Services;
 using TiSupport.Core.Services.IService;
 using TiSupport.DataAccess.Database;
@@ -18,6 +20,27 @@ builder.Services.AddCors(options =>
             .AllowAnyMethod();
     });
 });
+
+builder.Services.AddAuthentication(options =>
+    {
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    })
+    .AddJwtBearer(options =>
+    {
+        options.Authority = "http://localhost:8080/realms/tisupport"; // Keycloak server realm URL
+        options.Audience = "vue"; // Audience set to your .NET API client ID in Keycloak
+        options.RequireHttpsMetadata = false; // Only for development
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidIssuer = "http://localhost:8080/realms/tisupport",
+            ValidateAudience = true,
+            ValidAudience = "vue",
+            ValidateLifetime = true,
+            RoleClaimType = "realm_access.roles"
+        };
+    });
 
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("DefaultConnection")
@@ -47,6 +70,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 app.UseCors("AllowSpecificOrigins");
+app.UseAuthentication();
+app.UseAuthorization();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
