@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TiSupport.DataAccess.Repository.IRepo;
 using TiSupport.Shared.Models;
@@ -11,6 +12,7 @@ public class CompanyController(ILogger<CompanyController> logger, IUnitOfWork un
     private readonly ILogger<CompanyController> _logger = logger;
 
     [HttpGet("{id:int}", Name = "GetCompanyById")]
+    [Authorize]
     public async Task<ActionResult<Company>> Get(int id)
     {
         try
@@ -27,6 +29,7 @@ public class CompanyController(ILogger<CompanyController> logger, IUnitOfWork un
     }
 
     [HttpGet(Name = "GetCompanies")]
+    [Authorize]
     public async Task<IActionResult> GetAll()
     {
         try
@@ -42,6 +45,7 @@ public class CompanyController(ILogger<CompanyController> logger, IUnitOfWork un
     }
 
     [HttpPost(Name = "CreateCompany")]
+    [Authorize]
     public async Task<IActionResult> Create([FromBody] Company company)
     {
         try
@@ -58,6 +62,7 @@ public class CompanyController(ILogger<CompanyController> logger, IUnitOfWork un
     }
 
     [HttpPut(Name = "UpdateCompany")]
+    [Authorize]
     public async Task<IActionResult> Update([FromBody] Company company)
     {
         try
@@ -74,6 +79,7 @@ public class CompanyController(ILogger<CompanyController> logger, IUnitOfWork un
     }
 
     [HttpDelete("{id:int}", Name = "DeleteCompany")]
+    [Authorize]
     public async Task<IActionResult> Delete(int id)
     {
         try

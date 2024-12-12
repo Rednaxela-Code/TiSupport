@@ -12,6 +12,7 @@ public class TicketController(ILogger<TicketController> logger, IUnitOfWork unit
     private readonly ILogger<TicketController> _logger = logger;
 
     [HttpGet("{id:int}", Name = "GetTicketById")]
+    [Authorize]
     public async Task<ActionResult<Ticket>> Get(int id)
     {
         try
@@ -45,6 +46,7 @@ public class TicketController(ILogger<TicketController> logger, IUnitOfWork unit
     }
 
     [HttpPost(Name = "CreateTicket")]
+    [Authorize]
     public async Task<IActionResult> Create([FromBody] Ticket ticket)
     {
         try
@@ -61,6 +63,7 @@ public class TicketController(ILogger<TicketController> logger, IUnitOfWork unit
     }
 
     [HttpPut(Name = "UpdateTicket")]
+    [Authorize]
     public async Task<IActionResult> Update([FromBody] Ticket ticket)
     {
         try
@@ -77,6 +80,7 @@ public class TicketController(ILogger<TicketController> logger, IUnitOfWork unit
     }
 
     [HttpDelete("{id:int}", Name = "DeleteTicket")]
+    [Authorize]
     public async Task<IActionResult> Delete(int id)
     {
         try

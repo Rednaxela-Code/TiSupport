@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TiSupport.DataAccess.Repository.IRepo;
 using TiSupport.Shared.Models;
@@ -11,6 +12,7 @@ public class TicketAttachmentController(ILogger<TicketAttachmentController> logg
     private readonly ILogger<TicketAttachmentController> _logger = logger;
 
     [HttpGet("{id:int}", Name = "GetTicketAttachmentById")]
+    [Authorize]
     public async Task<ActionResult<TicketAttachment>> Get(int id)
     {
         try
@@ -27,6 +29,7 @@ public class TicketAttachmentController(ILogger<TicketAttachmentController> logg
     }
 
     [HttpGet(Name = "GetTicketAttachments")]
+    [Authorize]
     public async Task<IActionResult> GetAll()
     {
         try
@@ -42,6 +45,7 @@ public class TicketAttachmentController(ILogger<TicketAttachmentController> logg
     }
 
     [HttpPost(Name = "CreateTicketAttachment")]
+    [Authorize]
     public async Task<IActionResult> Create([FromBody] TicketAttachment ticketAttachment)
     {
         try
@@ -58,6 +62,7 @@ public class TicketAttachmentController(ILogger<TicketAttachmentController> logg
     }
 
     [HttpPut(Name = "UpdateTicketAttachment")]
+    [Authorize]
     public async Task<IActionResult> Update([FromBody] TicketAttachment ticketAttachment)
     {
         try
@@ -74,6 +79,7 @@ public class TicketAttachmentController(ILogger<TicketAttachmentController> logg
     }
 
     [HttpDelete("{id:int}", Name = "DeleteTicketAttachment")]
+    [Authorize]
     public async Task<IActionResult> Delete(int id)
     {
         try

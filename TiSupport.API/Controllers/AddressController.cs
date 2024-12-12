@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TiSupport.DataAccess.Repository.IRepo;
 using TiSupport.Shared.Models;
@@ -11,6 +12,7 @@ public class AddressController(ILogger<AddressController> logger, IUnitOfWork un
     private readonly ILogger<AddressController> _logger = logger;
 
     [HttpGet("{id:int}", Name = "GetAddressById")]
+    [Authorize]
     public async Task<ActionResult<Address>> Get(int id)
     {
         try
@@ -27,6 +29,7 @@ public class AddressController(ILogger<AddressController> logger, IUnitOfWork un
     }
 
     [HttpGet(Name = "GetAddresses")]
+    [Authorize]
     public async Task<IActionResult> GetAll()
     {
         try
@@ -42,6 +45,7 @@ public class AddressController(ILogger<AddressController> logger, IUnitOfWork un
     }
 
     [HttpPost(Name = "CreateAddress")]
+    [Authorize]
     public async Task<IActionResult> Create([FromBody] Address address)
     {
         try
@@ -58,6 +62,7 @@ public class AddressController(ILogger<AddressController> logger, IUnitOfWork un
     }
 
     [HttpPut(Name = "UpdateAddress")]
+    [Authorize]
     public async Task<IActionResult> Update([FromBody] Address address)
     {
         try
@@ -74,6 +79,7 @@ public class AddressController(ILogger<AddressController> logger, IUnitOfWork un
     }
 
     [HttpDelete("{id:int}", Name = "DeleteAddress")]
+    [Authorize]
     public async Task<IActionResult> Delete(int id)
     {
         try
