@@ -1,24 +1,7 @@
 <script setup lang="ts">
-import {onMounted, ref} from "vue";
-import {Company, getAllCompanies} from "../../utils/companyUtils.ts";
+import { companiesLogic } from "./Companies.ts";
 
-const companies = ref<Company[]>([]);
-
-const fetchCompanies = async () => {
-  try {
-    companies.value = await getAllCompanies();
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-defineExpose({
-  refreshData: fetchCompanies
-});
-
-onMounted(() => {
-  fetchCompanies();
-});
+const { companies } = companiesLogic();
 </script>
 
 <template>
@@ -34,8 +17,8 @@ onMounted(() => {
       </thead>
       <tbody>
       <tr v-for="company in companies" :key="company.id">
-        <td>{{company.id}}</td>
-        <td>{{company.name}}</td>
+        <td>{{ company.id }}</td>
+        <td>{{ company.name }}</td>
       </tr>
       </tbody>
     </table>
