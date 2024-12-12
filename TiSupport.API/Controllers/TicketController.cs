@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TiSupport.DataAccess.Repository.IRepo;
 using TiSupport.Shared.Models;
@@ -27,10 +28,12 @@ public class TicketController(ILogger<TicketController> logger, IUnitOfWork unit
     }
 
     [HttpGet(Name = "GetTickets")]
+    [Authorize]
     public async Task<IActionResult> GetAll()
     {
         try
         {
+            var claims = HttpContext.User.Claims.Select(c => new { c.Type, c.Value });
             var tickets = await unitOfWork.Tickets.GetAll();
             return Ok(tickets);
         }

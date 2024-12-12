@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using TiSupport.Core.Services;
 using TiSupport.Core.Services.IService;
 using TiSupport.DataAccess.Database;
@@ -27,9 +28,18 @@ builder.Services.AddAuthentication(options =>
     })
     .AddJwtBearer(options =>
     {
-        options.Authority = "http://localhost:8080/auth/realms/my-app"; // Keycloak server realm URL
-        options.Audience = "my-api"; // Audience set to your .NET API client ID in Keycloak
+        options.Authority = "http://localhost:8080/realms/tisupport"; // Keycloak server realm URL
+        options.Audience = "vue"; // Audience set to your .NET API client ID in Keycloak
         options.RequireHttpsMetadata = false; // Only for development
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidIssuer = "http://localhost:8080/realms/tisupport",
+            ValidateAudience = true,
+            ValidAudience = "vue",
+            ValidateLifetime = true,
+            RoleClaimType = "realm_access.roles"
+        };
     });
 
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(
