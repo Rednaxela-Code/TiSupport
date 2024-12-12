@@ -2,9 +2,9 @@
 import {onMounted, ref} from "vue";
 import {Contact, getAllContacts} from "../../utils/contactUtils.ts";
 
-const contacts = ref<Contact[]>([]);
+let contacts = ref<Contact[]>([]);
 
-const fetchContacts = async () => {
+let fetchContacts = async () => {
   try {
     contacts.value = await getAllContacts();
   } catch (error) {

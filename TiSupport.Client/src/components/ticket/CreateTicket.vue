@@ -6,7 +6,7 @@ import {
   ticketStatusOptions, ticketPriorityOptions, ticketCategoryOptions
 } from "../../utils/ticketUtils.ts";
 
-const newTicket = ref<Ticket>({
+let newTicket = ref<Ticket>({
   id: 0,
   name: '',
   status: null,
@@ -19,9 +19,9 @@ const newTicket = ref<Ticket>({
   commentIds: null,
 });
 
-const emit = defineEmits(['ticketCreated']);
+let emit = defineEmits(['ticketCreated']);
 
-const submitForm = async () => {
+let submitForm = async () => {
   try {
     await createTicket(newTicket.value);
     console.log('Ticket created successfully');

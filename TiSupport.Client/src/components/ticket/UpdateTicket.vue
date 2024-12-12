@@ -8,7 +8,7 @@ import {
   updateTicket
 } from "../../utils/ticketUtils.ts";
 
-const updateableTicket = ref<Ticket>({
+let updateableTicket = ref<Ticket>({
   id: 0,
   name: '',
   status: null,
@@ -21,9 +21,9 @@ const updateableTicket = ref<Ticket>({
   commentIds: null,
 });
 
-const emit = defineEmits(['ticketUpdated']);
+let emit = defineEmits(['ticketUpdated']);
 
-const submitForm = async () => {
+let submitForm = async () => {
   try {
     await updateTicket(updateableTicket.value);
     console.log('Ticket updated successfully');

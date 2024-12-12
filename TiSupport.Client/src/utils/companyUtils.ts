@@ -23,15 +23,15 @@ export enum CompanyType
     Affiliate = 10,
 }
 
-export const companyTypeOptions = computed(() => {
+export let companyTypeOptions = computed(() => {
     return Object.keys(CompanyType)
         .filter(key => isNaN(Number(key)))
         .map(key => ({ name: key, value: CompanyType[key as keyof typeof CompanyType] }));
 });
 
-export const getAllCompanies = async (): Promise<Company[]> => {
+export let getAllCompanies = async (): Promise<Company[]> => {
     try {
-        const response = await httpClient.get<Company[]>('/company');
+        let response = await httpClient.get<Company[]>('/company');
         console.log('Companies retrieved successfully:', response.data);
         return response.data;
     } catch (error) {
@@ -39,9 +39,9 @@ export const getAllCompanies = async (): Promise<Company[]> => {
         throw error; // Rethrow to handle errors in calling code
     }
 };
-export const createCompany = async (company: Company) => {
+export let createCompany = async (company: Company) => {
     try {
-        const response = await httpClient.post('/company', company, {
+        let response = await httpClient.post('/company', company, {
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -52,9 +52,9 @@ export const createCompany = async (company: Company) => {
     }
 };
 
-export const updateCompany = async (company: Company) => {
+export let updateCompany = async (company: Company) => {
     try {
-        const response = await httpClient.put('/company', company, {
+        let response = await httpClient.put('/company', company, {
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -65,9 +65,9 @@ export const updateCompany = async (company: Company) => {
     }
 };
 
-export const deleteCompany = async (company: Company) => {
+export let deleteCompany = async (company: Company) => {
     try {
-        const response = await httpClient.delete(`/company/${company.id}`, {
+        let response = await httpClient.delete(`/company/${company.id}`, {
             headers: {
                 'Content-Type': 'application/json'
             },

@@ -2,9 +2,9 @@
 import {onMounted, ref} from "vue";
 import {getAllTickets, Ticket} from "../../utils/ticketUtils.ts";
 
-const tickets = ref<Ticket[]>([]);
+let tickets = ref<Ticket[]>([]);
 
-const fetchTickets = async () => {
+let fetchTickets = async () => {
   try {
     tickets.value = await getAllTickets();
   } catch (error) {

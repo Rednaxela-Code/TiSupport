@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import {Ticket, deleteTicket} from "../../utils/ticketUtils.ts";
 
-const ticket = ref<Ticket>({
+let ticket = ref<Ticket>({
   id: 0,
   name: '',
   status: null,
@@ -15,9 +15,9 @@ const ticket = ref<Ticket>({
   commentIds: null,
 });
 
-const emit = defineEmits(['ticketDeleted']);
+let emit = defineEmits(['ticketDeleted']);
 
-const submitForm = async () => {
+let submitForm = async () => {
   try {
     await deleteTicket(ticket.value);
     console.log('Ticket deleted successfully');

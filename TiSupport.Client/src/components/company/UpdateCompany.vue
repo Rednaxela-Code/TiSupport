@@ -3,16 +3,16 @@ import {ref} from 'vue';
 import {Company, companyTypeOptions} from '../../utils/companyUtils.ts';
 import { updateCompany } from "../../utils/companyUtils.ts";
 
-const updatableCompany = ref<Company>({
+let updatableCompany = ref<Company>({
   id: 0,
   name: '',
   employees: null,
   companyType: 0,
 });
 
-const emit = defineEmits(['companyUpdated']);
+let emit = defineEmits(['companyUpdated']);
 
-const submitForm = async () => {
+let submitForm = async () => {
   try {
     await updateCompany(updatableCompany.value);
     console.log('Company created successfully');
