@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import {Contact, updateContact} from "../../utils/contactUtils.ts";
 
-const updateableContact = ref<Contact>({
+let updateableContact = ref<Contact>({
   id: 0,
   name: '',
   email: null,
@@ -15,9 +15,9 @@ const updateableContact = ref<Contact>({
   companyIds: null,
 });
 
-const emit = defineEmits(['contactUpdated']);
+let emit = defineEmits(['contactUpdated']);
 
-const submitForm = async () => {
+let submitForm = async () => {
   try {
     await updateContact(updateableContact.value);
     console.log('Contact updated successfully');

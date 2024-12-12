@@ -1,13 +1,13 @@
 import axios from "axios";
 import Keycloak from "keycloak-js";
 
-export const keycloak = new Keycloak({
+export let keycloak = new Keycloak({
     url: 'http://localhost:8080/',
     realm: 'tisupport',
     clientId: 'vue',
 });
 
-export const httpClient = axios.create({
+export let httpClient = axios.create({
     baseURL: 'https://localhost:7151',
     timeout: 5000,
 });

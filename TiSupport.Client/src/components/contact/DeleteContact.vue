@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import {Contact, deleteContact} from "../../utils/contactUtils.ts";
 
-const contact = ref<Contact>({
+let contact = ref<Contact>({
   id: 0,
   name: '',
   email: null,
@@ -15,9 +15,9 @@ const contact = ref<Contact>({
   companyIds: null,
 });
 
-const emit = defineEmits(['contactDeleted']);
+let emit = defineEmits(['contactDeleted']);
 
-const submitForm = async () => {
+let submitForm = async () => {
   try {
     await deleteContact(contact.value);
     console.log('Contact deleted successfully');

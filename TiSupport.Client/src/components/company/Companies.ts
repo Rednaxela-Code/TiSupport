@@ -2,9 +2,10 @@ import { ref, onMounted, defineExpose } from "vue";
 import { Company, getAllCompanies } from "../../utils/companyUtils.ts";
 
 export function companiesLogic() {
-    const companies = ref<Company[]>([]);
 
-    const fetchCompanies = async () => {
+    let companies = ref<Company[]>([]);
+
+    let fetchCompanies = async () => {
         try {
             companies.value = await getAllCompanies();
         } catch (error) {

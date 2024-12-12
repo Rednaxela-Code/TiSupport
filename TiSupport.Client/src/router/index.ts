@@ -5,7 +5,7 @@ import TicketsView from "../views/TicketsView.vue";
 import ContactsView from "../views/ContactsView.vue";
 import SettingsView from "../views/SettingsView.vue";
 
-const router = createRouter({
+let router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
         {

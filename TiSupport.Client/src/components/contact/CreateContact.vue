@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import {Contact, createContact} from "../../utils/contactUtils.ts";
 
-const newContact = ref<Contact>({
+let newContact = ref<Contact>({
   id: 0,
   name: '',
   email: null,
@@ -15,9 +15,9 @@ const newContact = ref<Contact>({
   companyIds: null,
 });
 
-const emit = defineEmits(['contactCreated']);
+let emit = defineEmits(['contactCreated']);
 
-const submitForm = async () => {
+let submitForm = async () => {
   try {
     await createContact(newContact.value);
     console.log('Contact created successfully');

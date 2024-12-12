@@ -36,27 +36,27 @@ export enum TicketCategory
     Administration = 3,
 }
 
-export const ticketStatusOptions = computed(() => {
+export let ticketStatusOptions = computed(() => {
     return Object.keys(TicketStatus)
         .filter(key => isNaN(Number(key)))
         .map(key => ({ name: key, value: TicketStatus[key as keyof typeof TicketStatus] }));
 });
 
-export const ticketPriorityOptions = computed(() => {
+export let ticketPriorityOptions = computed(() => {
     return Object.keys(TicketPriority)
         .filter(key => isNaN(Number(key)))
         .map(key => ({ name: key, value: TicketPriority[key as keyof typeof TicketPriority] }));
 });
 
-export const ticketCategoryOptions = computed(() => {
+export let ticketCategoryOptions = computed(() => {
     return Object.keys(TicketCategory)
         .filter(key => isNaN(Number(key)))
         .map(key => ({ name: key, value: TicketCategory[key as keyof typeof TicketCategory] }));
 });
 
-export const getAllTickets = async (): Promise<Ticket[]> => {
+export let getAllTickets = async (): Promise<Ticket[]> => {
     try {
-        const response = await httpClient.get('/ticket');
+        let response = await httpClient.get('/ticket');
         console.log('Ticket retrieved successfully:', response.data);
         return response.data;
     } catch (error) {
@@ -65,9 +65,9 @@ export const getAllTickets = async (): Promise<Ticket[]> => {
     }
 };
 
-export const createTicket = async (ticket: Ticket) => {
+export let createTicket = async (ticket: Ticket) => {
     try {
-        const response = await httpClient.post('/ticket', ticket, {
+        let response = await httpClient.post('/ticket', ticket, {
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -78,9 +78,9 @@ export const createTicket = async (ticket: Ticket) => {
     }
 };
 
-export const updateTicket = async (ticket: Ticket) => {
+export let updateTicket = async (ticket: Ticket) => {
     try {
-        const response = await httpClient.put('/ticket', ticket, {
+        let response = await httpClient.put('/ticket', ticket, {
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -91,9 +91,9 @@ export const updateTicket = async (ticket: Ticket) => {
     }
 };
 
-export const deleteTicket = async (ticket: Ticket) => {
+export let deleteTicket = async (ticket: Ticket) => {
     try {
-        const response = await httpClient.delete(`/ticket/${ticket.id}`, {
+        let response = await httpClient.delete(`/ticket/${ticket.id}`, {
             headers: {
                 'Content-Type': 'application/json'
             },

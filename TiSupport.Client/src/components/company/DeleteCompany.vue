@@ -2,15 +2,15 @@
 import { ref } from 'vue';
 import {Company, deleteCompany} from "../../utils/companyUtils.ts";
 
-const company = ref<Company>({
+let company = ref<Company>({
   id: 0,
   name: '',
   employees: null,
 });
 
-const emit = defineEmits(['companyDeleted']);
+let emit = defineEmits(['companyDeleted']);
 
-const submitForm = async () => {
+let submitForm = async () => {
   try {
     await deleteCompany(company.value);
     console.log('Company deleted successfully');

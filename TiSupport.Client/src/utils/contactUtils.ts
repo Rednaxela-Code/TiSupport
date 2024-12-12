@@ -13,9 +13,9 @@ export interface Contact {
     companyIds: number[] | null;
 }
 
-export const getAllContacts = async (): Promise<Contact[]> => {
+export let getAllContacts = async (): Promise<Contact[]> => {
     try {
-        const response = await httpClient.get('/contact');
+        let response = await httpClient.get('/contact');
         console.log('Contact retrieved successfully:', response.data);
         return response.data;
     } catch (error) {
@@ -24,9 +24,9 @@ export const getAllContacts = async (): Promise<Contact[]> => {
     }
 };
 
-export const createContact = async (contact: Contact) => {
+export let createContact = async (contact: Contact) => {
     try {
-        const response = await httpClient.post('/contact', contact, {
+        let response = await httpClient.post('/contact', contact, {
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -37,9 +37,9 @@ export const createContact = async (contact: Contact) => {
     }
 };
 
-export const updateContact = async (contact: Contact) => {
+export let updateContact = async (contact: Contact) => {
     try {
-        const response = await httpClient.put('/contact', contact, {
+        let response = await httpClient.put('/contact', contact, {
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -50,9 +50,9 @@ export const updateContact = async (contact: Contact) => {
     }
 };
 
-export const deleteContact = async (contact: Contact) => {
+export let deleteContact = async (contact: Contact) => {
     try {
-        const response = await httpClient.delete(`/contact/${contact.id}`, {
+        let response = await httpClient.delete(`/contact/${contact.id}`, {
             headers: {
                 'Content-Type': 'application/json'
             },

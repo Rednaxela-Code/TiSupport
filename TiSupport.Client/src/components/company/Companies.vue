@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { companiesLogic } from "./Companies.ts";
 
-const { companies } = companiesLogic();
+let { companies } = companiesLogic();
 </script>
 
 <template>
