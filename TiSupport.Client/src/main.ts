@@ -11,7 +11,7 @@ keycloak.init({ onLoad: 'login-required',
     checkLoginIframe: false })
     .then((authenticated) => {
         if (authenticated) {
-            console.log('Access Token:', keycloak.token);
+            //console.log('Access Token:', keycloak.token);
             // Set up Axios interceptor to add the token to each request
             httpClient.interceptors.request.use(async (config) => {
                 await keycloak.updateToken(30); // Refresh token if close to expiring
