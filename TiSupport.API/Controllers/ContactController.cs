@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TiSupport.DataAccess.Repository.IRepo;
 using TiSupport.Shared.Models;
@@ -11,6 +12,7 @@ public class ContactController(ILogger<ContactController> logger, IUnitOfWork un
     private readonly ILogger<ContactController> _logger = logger;
 
     [HttpGet("{id:int}", Name = "GetContactById")]
+    [Authorize]
     public async Task<ActionResult<Contact>> Get(int id)
     {
         try
@@ -27,6 +29,7 @@ public class ContactController(ILogger<ContactController> logger, IUnitOfWork un
     }
 
     [HttpGet(Name = "GetContacts")]
+    [Authorize]
     public async Task<IActionResult> GetAll()
     {
         try
@@ -42,6 +45,7 @@ public class ContactController(ILogger<ContactController> logger, IUnitOfWork un
     }
 
     [HttpPost(Name = "CreateContact")]
+    [Authorize]
     public async Task<IActionResult> Create([FromBody] Contact contact)
     {
         try
@@ -58,6 +62,7 @@ public class ContactController(ILogger<ContactController> logger, IUnitOfWork un
     }
 
     [HttpPut(Name = "UpdateContact")]
+    [Authorize]
     public async Task<IActionResult> Update([FromBody] Contact contact)
     {
         try
@@ -74,6 +79,7 @@ public class ContactController(ILogger<ContactController> logger, IUnitOfWork un
     }
 
     [HttpDelete("{id:int}", Name = "DeleteContact")]
+    [Authorize]
     public async Task<IActionResult> Delete(int id)
     {
         try

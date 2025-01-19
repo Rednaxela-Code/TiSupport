@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TiSupport.DataAccess.Repository.IRepo;
 using TiSupport.Shared.Models;
@@ -11,6 +12,7 @@ public class TicketCommentController(ILogger<TicketCommentController> logger, IU
     private readonly ILogger<TicketCommentController> _logger = logger;
 
     [HttpGet("{id:int}", Name = "GetTicketCommentById")]
+    [Authorize]
     public async Task<ActionResult<TicketComment>> Get(int id)
     {
         try
@@ -27,6 +29,7 @@ public class TicketCommentController(ILogger<TicketCommentController> logger, IU
     }
 
     [HttpGet(Name = "GetTicketComments")]
+    [Authorize]
     public async Task<IActionResult> GetAll()
     {
         try
@@ -42,6 +45,7 @@ public class TicketCommentController(ILogger<TicketCommentController> logger, IU
     }
 
     [HttpPost(Name = "CreateTicketComment")]
+    [Authorize]
     public async Task<IActionResult> Create([FromBody] TicketComment ticketComment)
     {
         try
@@ -58,6 +62,7 @@ public class TicketCommentController(ILogger<TicketCommentController> logger, IU
     }
 
     [HttpPut(Name = "UpdateTicketComment")]
+    [Authorize]
     public async Task<IActionResult> Update([FromBody] TicketComment ticketComment)
     {
         try
@@ -74,6 +79,7 @@ public class TicketCommentController(ILogger<TicketCommentController> logger, IU
     }
 
     [HttpDelete("{id:int}", Name = "DeleteTicketComment")]
+    [Authorize]
     public async Task<IActionResult> Delete(int id)
     {
         try

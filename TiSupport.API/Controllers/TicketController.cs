@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TiSupport.DataAccess.Repository.IRepo;
 using TiSupport.Shared.Models;
@@ -11,6 +12,7 @@ public class TicketController(ILogger<TicketController> logger, IUnitOfWork unit
     private readonly ILogger<TicketController> _logger = logger;
 
     [HttpGet("{id:int}", Name = "GetTicketById")]
+    [Authorize]
     public async Task<ActionResult<Ticket>> Get(int id)
     {
         try
@@ -27,10 +29,12 @@ public class TicketController(ILogger<TicketController> logger, IUnitOfWork unit
     }
 
     [HttpGet(Name = "GetTickets")]
+    [Authorize]
     public async Task<IActionResult> GetAll()
     {
         try
         {
+            var claims = HttpContext.User.Claims.Select(c => new { c.Type, c.Value });
             var tickets = await unitOfWork.Tickets.GetAll();
             return Ok(tickets);
         }
@@ -42,6 +46,7 @@ public class TicketController(ILogger<TicketController> logger, IUnitOfWork unit
     }
 
     [HttpPost(Name = "CreateTicket")]
+    [Authorize]
     public async Task<IActionResult> Create([FromBody] Ticket ticket)
     {
         try
@@ -58,6 +63,7 @@ public class TicketController(ILogger<TicketController> logger, IUnitOfWork unit
     }
 
     [HttpPut(Name = "UpdateTicket")]
+    [Authorize]
     public async Task<IActionResult> Update([FromBody] Ticket ticket)
     {
         try
@@ -74,6 +80,7 @@ public class TicketController(ILogger<TicketController> logger, IUnitOfWork unit
     }
 
     [HttpDelete("{id:int}", Name = "DeleteTicket")]
+    [Authorize]
     public async Task<IActionResult> Delete(int id)
     {
         try
