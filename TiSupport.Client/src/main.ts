@@ -11,6 +11,7 @@ keycloak.init({ onLoad: 'login-required',
     checkLoginIframe: false })
     .then((authenticated) => {
         if (authenticated) {
+            // TODO: Log for debug only
             console.log('Access Token:', keycloak.token);
             // Set up Axios interceptor to add the token to each request
             httpClient.interceptors.request.use(async (config) => {
