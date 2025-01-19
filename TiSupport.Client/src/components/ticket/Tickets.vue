@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {onMounted, ref} from "vue";
-import {getAllTickets, Ticket} from "../../utils/ticketUtils.ts";
+import {getAllTickets, Ticket, getStatusString, getCategoryString, getPriorityString} from "../../utils/ticketUtils.ts";
 
 const tickets = ref<Ticket[]>([]);
 
@@ -33,19 +33,20 @@ onMounted(() => {
         <th>Status</th>
         <th>Priority</th>
         <th>Category</th>
-        <th>Content</th>
+        <th>Actions</th>
       </tr>
       </thead>
       <tbody>
       <tr v-for="ticket in tickets" :key="ticket.id">
         <td>{{ticket.id}}</td>
         <td>{{ticket.name}}</td>
-        <td>{{ticket.status}}</td>
-        <td>{{ticket.priority}}</td>
-        <td>{{ticket.category}}</td>
-        <td>{{ticket.content}}</td>
+        <td>{{getStatusString(ticket.status)}}</td>
+        <td>{{getPriorityString(ticket.priority)}}</td>
+        <td>{{getCategoryString(ticket.category)}}</td>
         <td>
+          <button class="btn btn">View</button>
           <button class="btn btn-primary">Edit</button>
+          <button class="btn btn-warning">Delete</button>
         </td>
       </tr>
       </tbody>

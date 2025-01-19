@@ -103,3 +103,24 @@ export const deleteTicket = async (ticket: Ticket) => {
         console.error('Error deleting ticket:', error);
     }
 };
+
+export const getStatusString = (status: number | null): string => {
+    if (status === null) {
+        return 'Unknown'; // Fallback-waarde voor null
+    }
+    return TicketStatus[status]; // Converteert 0 -> "New", 1 -> "InProgress", etc.
+};
+
+export const getPriorityString = (priority: number | null): string => {
+    if (priority === null) {
+        return 'Unknown';
+    }
+    return TicketPriority[priority];
+};
+
+export const getCategoryString = (category: number | null): string => {
+    if (category === null) {
+        return 'Unknown';
+    }
+    return TicketCategory[category];
+};

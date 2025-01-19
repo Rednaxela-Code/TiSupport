@@ -6,6 +6,7 @@
   --accent: #4834d4; /* Deep bluish-purple */
   --accent-hover: #686de0; /* A softer purple for hover effects */
   --danger: #ff4646; /* Danger color remains unchanged */
+  --danger-hover: #ff4611;
   --success: #2ecc71; /* Success color remains unchanged */
 }
 
@@ -95,6 +96,15 @@ body {
 
 .btn-primary:hover {
   background-color: var(--accent-hover);
+}
+
+.btn-warning {
+  background-color: var(--danger);
+  color: white;
+}
+
+.btn-warning:hover {
+  background-color: var(--danger-hover);
 }
 
 .grid {
