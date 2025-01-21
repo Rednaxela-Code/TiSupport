@@ -29,7 +29,7 @@ public class TicketController(ILogger<TicketController> logger, IUnitOfWork unit
     }
 
     [HttpGet(Name = "GetTickets")]
-    [Authorize]
+    [Authorize(Policy = "RequireRole")]
     public async Task<IActionResult> GetAll()
     {
         try

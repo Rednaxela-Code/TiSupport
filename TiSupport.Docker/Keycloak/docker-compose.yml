@@ -11,7 +11,7 @@ services:
       - keycloak_network
 
   keycloak:
-    image: quay.io/keycloak/keycloak:23.0.6
+    image: quay.io/keycloak/keycloak:26.1.0
     command: start
     environment:
       KC_HOSTNAME: localhost
@@ -26,6 +26,7 @@ services:
       KC_DB_URL: jdbc:postgresql://postgres/${POSTGRES_DB}
       KC_DB_USERNAME: ${POSTGRES_USER}
       KC_DB_PASSWORD: ${POSTGRES_PASSWORD}
+      KC_PROXY: none
     ports:
       - 8080:8080
     restart: always
