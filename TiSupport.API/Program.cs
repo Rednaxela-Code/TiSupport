@@ -27,31 +27,34 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
         options.Authority = "http://localhost:8080/realms/tisupportkc";
-        options.Audience = "vue"; // Zorg dat dit overeenkomt met je Keycloak-client
-        options.RequireHttpsMetadata = false; // Alleen voor lokale ontwikkeling
+        options.Audience = "vue"; // Keycloak ClientID
+        options.RequireHttpsMetadata = false; // Only for local development
 
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuer = true,
-            ValidIssuer = "http://localhost:8080/realms/tisupportkc", // Controleer tegen de issuer in het token
+            ValidIssuer = "http://localhost:8080/realms/tisupportkc", // Token issuer
             ValidateAudience = true,
-            ValidAudiences = new[] { "vue", "account" }, // Sta beide audiences toe
-            ValidateLifetime = true, // Controleer of het token niet is verlopen
-            ValidateIssuerSigningKey = true // Valideer de handtekening
+            ValidAudiences = new[] { "vue", "account" }, // Due to lack of knowledge i have vue and account audiences, it hould be only account but yeah.
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true //
         };
     });
 
 builder.Services.AddAuthorizationBuilder()
+    // Add policy for general user.
     .AddPolicy("RequireGeneralRole", policy =>
         policy.RequireAssertion(context =>
             context.User.Claims.Any(c =>
                 c.Type == "resource_access" &&
                 c.Value.Contains("general"))))
+    // Add policy for admin user.
     .AddPolicy("RequireAdminRole", policy =>
         policy.RequireAssertion(context =>
             context.User.Claims.Any(c =>
                 c.Type == "resource_access" &&
                 c.Value.Contains("admin"))))
+    // Add policy for just any user, as long as they have a role they should be valid? Just to not have any open endpoints.
     .AddPolicy("RequireRole", policy =>
         policy.RequireAssertion(context =>
             context.User.Claims.Any(c =>
