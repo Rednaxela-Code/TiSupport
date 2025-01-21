@@ -35,7 +35,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateIssuer = true,
             ValidIssuer = "http://localhost:8080/realms/tisupportkc", // Token issuer
             ValidateAudience = true,
-            ValidAudiences = new[] { "vue", "account" }, // Due to lack of knowledge i have vue and account audiences, it hould be only account but yeah.
+            ValidAudiences = new[] { "vue", "account" }, // Due to lack of knowledge i have vue and account audiences, it hould be only vue but yeah.
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true //
         };
